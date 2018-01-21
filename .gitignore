@@ -23,6 +23,7 @@
 .settings
 .tmproj
 Thumbs.db
+.vscode
 
 # Folders to ignore
 .CVS
