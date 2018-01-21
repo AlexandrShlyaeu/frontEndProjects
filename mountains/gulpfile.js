@@ -1,6 +1,6 @@
 const gulp = require('gulp');
 const pug = require('gulp-pug');
-
+const fs = require('fs');
 const sass = require('gulp-sass');
 const rename = require('gulp-rename');
 const sourcemaps = require('gulp-sourcemaps');
@@ -34,13 +34,16 @@ const paths = {
 }
 
 // pug
-function templates() {
+function views() {
     return gulp.src(paths.templates.pages)
-        .pipe(pug({ pretty: true }))
+        .pipe(pug({
+            locals : JSON.parse(fs.readFileSync('./content.json', 'utf-8')),
+            pretty: true,
+        }))
         .pipe(gulp.dest(paths.root));
 }
 
-// scss
+// sass
 function styles() {
     return gulp.src('./src/styles/app.sass')
         .pipe(sourcemaps.init())
@@ -65,7 +68,7 @@ function scripts() {
 // галповский вотчер
 function watch() {
     gulp.watch(paths.styles.src, styles);
-    gulp.watch(paths.templates.src, templates);
+    gulp.watch(paths.templates.src, views);
     gulp.watch(paths.images.src, images);
     gulp.watch(paths.scripts.src, scripts);
 }
@@ -84,13 +87,13 @@ function images() {
         .pipe(gulp.dest(paths.images.dest));
 }
 
-exports.templates = templates;
+exports.templates = views;
 exports.styles = styles;
 exports.clean = clean;
 exports.images = images;
 
 gulp.task('default', gulp.series(
     clean,
-    gulp.parallel(styles, templates, images, scripts),
+    gulp.parallel(styles, views, images, scripts),
     gulp.parallel(watch, server)
 ));

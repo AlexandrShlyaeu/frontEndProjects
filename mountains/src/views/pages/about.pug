@@ -4,5 +4,65 @@ block variables
     - var title = 'Обо мне'
 
 block content
-    h1 Обо мне
-    include ../common/technologies.pug
+    .wrapper
+        section.section.hero
+            ul.socials
+                each item in ["vk", "gh", "in"]
+                    li.socials__item
+                        a(href="" class=`socials__link socials__link_${item}`)
+            a(href="#").hamburger
+            a(href="http://").down-arrow
+            .hero__title
+                img(src="", alt="", srcset="").section-title
+                .user.hero__user-block
+                    .user__photo 
+                    .user__name
+                    .user__desc
+        section.section.about 
+            .about__left
+                svg.triangle.triangle_fill_white
+                .title.about__section-title
+                    | Обо мне
+                .user-about
+                    .user-about__pictures
+                    .user-about__title.subtitle
+                        | Кто я 
+                    .user-about__text
+                        p Lorem ipsum dolor sit amet consectetur adipisicing elit. Nisi, similique architecto? Libero veritatis totam inventore fugit assumenda harum officiis corporis dolores. Alias deleniti molestias aliquam facere. Neque voluptate ad facilis.
+                        p Lorem ipsum dolor sit amet consectetur adipisicing elit. Nisi, similique architecto? Libero veritatis totam inventore fugit assumenda harum officiis corporis dolores. Alias deleniti molestias aliquam facere. Neque voluptate ad facilis.
+            .about__right
+                svg.triangle.triangle_fill_beige
+
+                .about-data
+                    .about-data__description.about-user-info
+                        .about-user-info__title
+                            .subtitle
+                                | Чем я могувам полезен
+                        .about-user-info__text
+                            p Lorem, ipsum dolor sit amet consectetur adipisicing elit. Cumque placeat libero quas reiciendis voluptates commodi cum pariatur sint neque doloremque? Voluptate tempora ad adipisci accusamus accusantium asperiores et vero esse!
+                    .about-data__content
+                        //- include ../common/technologies.pug
+                        ul.skills
+                            each skill, skillName in skills
+                                each skillsArray, skillName in skill
+                                    li.skills__item
+                                        .skill_section
+                                            .skill-sections__title= skillName
+                                            ul.skills-sections__list
+                                                each skillsTitle in skillsArray
+                                                    li.skills-section__item
+                                                        .skill
+                                                            svg.skill__circle
+                                                            .skill__name= skillsTitle
+                        //- ul.skills
+                        //-     each skill in ['Frontend', 'Backend', 'WorkFlow']
+                        //-         li.skills__item
+                        //-             .skill-sections__title= skill
+                        //-             ul.skills-sections__list
+                        //-                 each skillName in ['HTML','CSS3', 'jQuery']
+                        //-                     li.skills-section__item
+                        //-                         .skill
+                        //-                             svg.skill__circle
+                        //-                             .skill__name= skillName
+
+        section.section.map
