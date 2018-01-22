@@ -1,14 +1,17 @@
-body
-    margin: 100px
-    background: #ccc
+$white : #efeee9
+$beige: #eeebdf
+$main-font-color : #373e42
 
+//layout setups
+@import "layout/setups"
+@import "layout/fonts"
 
-    // vendors
+//mixins
+@import "mixins/mixins"
 
+//Vendors 
 @import 'vendors/_vendors'
 
+@import 'blocks/_blocks'
 
 
-@import 'common/menu'
-@import 'common/technologies'
-@import 'common/slider'
