@@ -22,7 +22,8 @@
     "webpack": "^3.10.0"
   },
   "dependencies": {
+    "fs": "0.0.1-security",
     "jquery": "^3.2.1",
-    "fs": "0.0.1-security"
+    "normalize": "^0.3.1"
   }
 }

@@ -9,8 +9,10 @@ html
         meta(content="" name="keywords")
         meta(content="width=device-width, initial-scale=1" name="viewport")
         meta(content="ie=edge" http-equiv="x-ua-compatible")
+        link(rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/normalize/7.0.0/normalize.min.css')
         link(rel='stylesheet' href='/assets/styles/app.min.css')
         script(src='/assets/scripts/bundle.js' defer)
     body
-        block content
-        include common/menu.pug
+        .wraper
+            block content
+            include common/menu.pug
